@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "Gizmogizmo1!",
+    "database": "music_tour",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "Gizmogizmo1!",
+    "database": "music_tour_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "Gizmogizmo1!",
+    "database": "music_tour_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
