@@ -5,7 +5,7 @@ const { Event } = db
 // FIND ALL Events
 events.get('/', async (req, res) => {
     try {
-        const foundEvents = await Events.findAll()
+        const foundEvents = await Event.findAll()
         res.status(200).json(foundEvents)
     } catch (error) {
         res.status(500).json(error)
@@ -29,7 +29,7 @@ events.post('/', async (req, res) => {
     try {
         const newEvent = await Event.create(req.body)
         res.status(200).json({
-            message: 'Successfully inserted a new band',
+            message: 'Successfully inserted a new event',
             data: newEvent
         })
     } catch(err) {
