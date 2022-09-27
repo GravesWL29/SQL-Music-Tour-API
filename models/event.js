@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 const {
   Model
 } = require('sequelize');
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       // set times 
       Band.hasMany(SetTime, {
         foreignKey: "band_id",
-        set_times: "set_times"
+        as: "set_times"
       })
     }
   }
@@ -51,6 +51,5 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'bands',
     timestamps: false
   })
-
-  return Band;
-};
+  return Band
+}

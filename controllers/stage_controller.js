@@ -1,18 +1,24 @@
+// DEPENDENCIES
 const stages = require('express').Router()
 const db = require('../models')
-const { Stage } = db
+const { Stage } = db 
+const { Op } = require('sequelize')
 
-// FIND ALL Events
+// FIND ALL STAGES
 stages.get('/', async (req, res) => {
     try {
-        const foundStages = await Stage.findAll()
+        const foundStages = await Stage.findAll({
+            where: {
+                stage_name: { [Op.like]: `%${req.query.stage_name ? req.query.stage_name : ''}%` }
+            }
+        })
         res.status(200).json(foundStages)
     } catch (error) {
         res.status(500).json(error)
     }
 })
 
-// FIND A SPECIFIC BAND
+// FIND A SPECIFIC STAGE
 stages.get('/:id', async (req, res) => {
     try {
         const foundStage = await Stage.findOne({
@@ -24,7 +30,7 @@ stages.get('/:id', async (req, res) => {
     }
 })
 
-// CREATE A BAND
+// CREATE A STAGE
 stages.post('/', async (req, res) => {
     try {
         const newStage = await Stage.create(req.body)
@@ -37,8 +43,7 @@ stages.post('/', async (req, res) => {
     }
 })
 
-
-// UPDATE A BAND
+// UPDATE A STAGE
 stages.put('/:id', async (req, res) => {
     try {
         const updatedStages = await Stage.update(req.body, {
@@ -54,7 +59,7 @@ stages.put('/:id', async (req, res) => {
     }
 })
 
-// DELETE A BAND
+// DELETE A STAGE
 stages.delete('/:id', async (req, res) => {
     try {
         const deletedStages = await Stage.destroy({
@@ -70,5 +75,5 @@ stages.delete('/:id', async (req, res) => {
     }
 })
 
-
+// EXPORT
 module.exports = stages
